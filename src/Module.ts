@@ -2,9 +2,6 @@
  * Created by novacrazy on 8/31/14.
  */
 
-/// <reference path="typings/tsd.d.ts" />
-
-
 /*
  * These are type definitions for the internal (mostly) 'module' module.
  *
@@ -61,7 +58,7 @@ module Module {
          * the Node 'require' will not suffice.
          *
          * */
-        _cache: HashTable<typeof module.exports>;
+        _cache: HashTable<any>;
 
         /*
          * Stores paths to already loaded or found modules,
@@ -109,13 +106,12 @@ module Module {
 
         /*
          * Sort of recursively searches for a module,
-         * returns false if it wasn't found.
+         * returns falsey if it wasn't found.
          *
          * Also sets an entry in _pathCache if found.
          *
          * */
         _findPath: ( request : string, paths : string[] ) => string;
-        _findPath: ( request : string, paths : string[] ) => boolean;
 
         /*
          * Finds node modules relative to __dirname
@@ -134,7 +130,7 @@ module Module {
          * reads in the file and compiles it, but uses the _cache entry if available
          *
          * */
-        _load: ( request : string, parent : IModule, isMain : boolean ) => typeof module.exports;
+        _load: ( request : string, parent : IModule, isMain : boolean ) => any;
 
         /*
          * Finds the absolute path of the requested module script
@@ -147,7 +143,7 @@ module Module {
          * such as with the actual Node REPL
          *
          * */
-        requireRepl: () => typeof module.exports;
+        requireRepl: () => any;
 
         /*
          * Run by Node after Node starts up,
@@ -179,7 +175,7 @@ module Module {
          * in preparation for compilation.
          *
          * */
-        load: ( filename : string ) => void;
+        load( filename : string ) : void;
 
         /*
          * Value returned by Module._nodeModulePaths(path.dirname(this.filename))
@@ -192,7 +188,7 @@ module Module {
          * usually this.filename
          *
          * */
-        _compile: ( content : string, filename : string ) => any;
+        _compile( content : string, filename : string ) : any;
 
         /*
          * True if loaded, simple as that.
@@ -218,13 +214,13 @@ module Module {
          * exports object provided to the loaded script, and edited by it.
          *
          * */
-        exports : typeof module.exports;
+        exports : any;
 
         /*
          * Bound require function to this module.
          *
          * */
-        require: ( path : string ) => typeof module.exports;
+        require( path : string ) : any;
 
         /*
          * Reference to parent module, if any.
