@@ -1,8 +1,9 @@
-declare module Module {
-    interface HashTable<T> {
+declare module "module" {
+    export interface HashTable<T> {
         [key: string]: T;
     }
-    interface IModuleStaticInternal {
+
+    export interface IModuleStaticInternal {
         _contextLoad: boolean;
         _cache: HashTable<any>;
         _pathCache: HashTable<string>;
@@ -21,16 +22,19 @@ declare module Module {
         runMain: () => void;
         _initPaths: () => void;
     }
-    interface IModuleStatic extends IModuleStaticInternal {
+
+    export interface IModuleStatic extends IModuleStaticInternal {
         new( id? : string, parent? : IModule ): IModule;
     }
-    interface IModuleInternal {
+
+    export interface IModuleInternal {
         load( filename : string ): void;
         paths: string[];
         _compile( content : string, filename : string ): any;
         loaded: boolean;
     }
-    interface IModule extends IModuleInternal {
+
+    export interface IModule extends IModuleInternal {
         filename?: string;
         id: string;
         exports: any;
@@ -38,6 +42,6 @@ declare module Module {
         parent?: IModule;
         children: IModule[];
     }
-    var Module : IModuleStatic;
+
+    export var Module : IModuleStatic;
 }
-export = Module;

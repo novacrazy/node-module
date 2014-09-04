@@ -1,10 +1,11 @@
-declare module NativeModule {
-    interface INativeModuleSource {
+declare module "native_module" {
+    export interface INativeModuleSource {
         name: string;
         source: string;
         source_len: number;
     }
-    interface INativeModuleStatic {
+
+    export interface INativeModuleStatic {
         require: ( id : string ) => any;
         getCached: ( id : string ) => any;
         exists: ( id : string ) => boolean;
@@ -14,7 +15,8 @@ declare module NativeModule {
         _source: INativeModuleSource[];
         new( id : string ): INativeModule;
     }
-    interface INativeModule {
+
+    export interface INativeModule {
         filename: string;
         id: string;
         exports: any;
@@ -23,4 +25,3 @@ declare module NativeModule {
         cache: () => void;
     }
 }
-export = NativeModule;
