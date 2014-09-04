@@ -2,8 +2,6 @@
  * Created by novacrazy on 8/31/14.
  */
 
-/// <reference path="typings/tsd.d.ts" />
-
 /*
  * The NativeModule module is used internally
  * and is NOT defined within running node programs.
@@ -35,13 +33,13 @@ module NativeModule {
          *   return nativeModule.exports;
          *
          * */
-        require: ( id : string ) => typeof module.exports;
+        require: ( id : string ) => any;
 
         /*
          * Gets the cached NativeModule exports for id, if any
          *
          * */
-        getCached: ( id : string ) => typeof module.exports;
+        getCached: ( id : string ) => any;
 
         /*
          * Tests if a NativeModule with id exists
@@ -77,7 +75,7 @@ module NativeModule {
         //See IModule for these
         filename : string;
         id : string;
-        exports : typeof module.exports;
+        exports : any;
         loaded : boolean;
 
         /*
