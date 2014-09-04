@@ -38,5 +38,6 @@ declare module Module {
         parent?: IModule;
         children: IModule[];
     }
+    var Module : IModuleStatic;
 }
 export = Module;
