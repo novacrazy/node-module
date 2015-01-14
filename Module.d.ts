@@ -21,7 +21,7 @@ declare module "module" {
         _findPath: ( request : string, paths : string[] ) => string;
         _nodeModulePaths: ( from : string ) => string[];
         _resolveLookupPaths: ( request : string, parent : IModule ) => any[];
-        _load: ( request : string, parent : IModule, isMain : boolean ) => any;
+        _load: ( request : string, parent : IModule, isMain? : boolean ) => any;
         _resolveFilename: ( request : string, parent : IModule ) => string;
         requireRepl: () => any;
         runMain: () => void;
